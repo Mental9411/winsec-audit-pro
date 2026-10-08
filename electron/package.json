@@ -1,0 +1,35 @@
+{
+  "name": "winsec-audit-pro-desktop",
+  "version": "1.0.0",
+  "description": "Windows Security Audit Pro - Electron shell",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^31.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.winsecauditpro.app",
+    "productName": "Windows Security Audit Pro",
+    "directories": { "output": "../release" },
+    "files": [
+      "main.js",
+      "preload.js",
+      "../frontend/dist/**/*"
+    ],
+    "extraResources": [
+      { "from": "../backend/dist", "to": "backend", "filter": ["**/*"] }
+    ],
+    "win": {
+      "target": ["nsis"],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
